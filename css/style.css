@@ -179,12 +179,39 @@ body {
     width: 180px;
     position: absolute;
     margin: auto;
-    left:0;
+    left: 0;
     right: 0;
     top: 170px;
     z-index: 30;
     box-shadow: 0 5px 65px black;
     height: 20px;
     background-color: black;
-    
+}
+.faketext {
+    display: none;
+}
+@media screen and (max-width: 500px) {
+    #centerdiv {
+        top: 250px;
+    }
+}
+@media (pointer:coarse) {
+    .faketext {
+        display: block;
+        position: absolute; 
+        z-index: 600;
+        width: 900px;
+        height: 900px;
+        opacity: 0;
+    }
+    #intro {
+        width: 200px;
+    }
+    .faketext:focus {
+        top: -1000px;
+    }
+    body {
+        overflow-x: hidden;
+        position:fixed;
+    }
 }
