@@ -10,14 +10,21 @@ var maxright = bigdiv.offsetWidth - carriage.offsetWidth;
 
 carriage.style.left = maxright + "px";
 
+var button = document.getElementById('btn-download');
+button.addEventListener('click', function (e) {
+    var dataURL = paper.toDataURL('image/png');
+    button.href = dataURL;
+});
+
 var ctx = paper.getContext('2d');
 ctx.font = '16px Courier New';
 document.addEventListener('keydown', (event) => {
     const keyName = event.keyCode;
 
     if ((keyName >= 48 && keyName <= 90) || keyName == 32 || keyName == 222 || (keyName >= 186 && keyName <= 193)) {
-        if (keyName == 32)
-        event.preventDefault();
+        if (keyName == 32) {
+            event.preventDefault();
+        }
         var myString = String.fromCharCode(keyName);
         if (keyName == 186) myString = ";";
         if (keyName == 187) myString = "=";
@@ -158,8 +165,3 @@ function yesHeight() {
         return false;
     }
 }
-var button = document.getElementById('btn-download');
-button.addEventListener('click', function (e) {
-    var dataURL = paper.toDataURL('image/png');
-    button.href = dataURL;
-});
