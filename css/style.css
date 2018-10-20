@@ -197,18 +197,14 @@ body {
 }
 @media (pointer:coarse) {
     .faketext {
+        position: absolute;
         display: block;
-        position: absolute; 
-        z-index: 600;
         width: 900px;
         height: 900px;
-        opacity: 0;
+        background-color: redl
     }
     #intro {
         width: 200px;
-    }
-    .faketext:focus {
-        top: -1000px;
     }
     body {
         overflow-x: hidden;
