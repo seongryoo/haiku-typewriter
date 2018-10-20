@@ -4,38 +4,40 @@
 <head>
     <title>Haiku Typewriter</title>
     <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div id="intro">
-    <h1>Haiku Typewriter:</h1>
-    <b>Start typing to compose your
+    <input type="text" class="faketext">
+    <div id="intro"> 
+        <h1>Haiku Typewriter:</h1>
+        <b>Start typing to compose your
         <br>own little comet.</b>
-    <p>Use enter to move the paper up.
-        <br>Drag the carriage with your mouse to align.</p>
-        
-    <a href="#" class="button" id="btn-download" download="haiku.png">Save your page</a>
-    
+        <p>Use enter to move the paper up.
+            <br>Drag the carriage with your mouse to align.</p>
+
+        <a href="#" class="button" id="btn-download" download="haiku.png">Download your manuscript</a>
+
     </div>
     <div id="centerdiv">
-            <div id="bigdrag"></div>
+        <div id="bigdrag"></div>
         <img draggable="false" src="images/carriage.png" id="carriage-view">
         <div id="carriage">
-            
+
             <canvas width='250' height='350' id="paper" class="bounce"></canvas>
             <div class="carriagemech">
                 <div id="dragme"></div>
-                
-        <div id="hidey"></div>
+
+                <div id="hidey"></div>
             </div>
-            
+
         </div>
-        
+
         <div id="cursor"></div>
         <div class="ribbon"></div>
         <img draggable="false" class="chassis" src="images/chassis.png">
-        
-        
+
+
     </div>
     <script type="text/javascript" src="js/script.js"></script>
 </body>

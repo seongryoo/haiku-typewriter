@@ -120,6 +120,7 @@ function dragElement(elmnt) {
     } else {
         /* otherwise, move the DIV from anywhere inside the DIV:*/
     bigdrag.onmousedown = dragMouseDown;
+    bigdrag.ontouchstart = dragMouseDown;
 
 
     function dragMouseDown(e) {
@@ -137,8 +138,11 @@ function dragElement(elmnt) {
         carv.classList.add("bounce");
 
         document.onmouseup = closeDragElement;
+        
+        document.ontouchend = closeDragElement;
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
+        document.ontouchmove = elementDragTouch;
 
 
 
@@ -161,11 +165,29 @@ function dragElement(elmnt) {
         bigdrag.style.left = (carv.offsetLeft + 50) + "px";
     }
 
-
+    function elementDragTouch(e) {
+        e.preventDefault();
+        
+        var touch = e.touches[0];
+        var x = touch.pageX;
+        var y = touch.pageY;
+        // calculate the new cursor position:
+        pos1 = pos3 - x;
+        pos2 = pos4 - y;
+        pos3 = x;
+        pos4 = y;
+        // set the element's new position:
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        checkWidth();
+        carv.style.left = (elmnt.offsetLeft - 160) + "px";
+        bigdrag.style.left = (carv.offsetLeft + 50) + "px";
+    }
     function closeDragElement() {
         /* stop moving when mouse button is released:*/
         document.onmouseup = null;
         document.onmousemove = null;
+        document.ontouchstart = null;
+        document.ontouchmove = null;
     }
 }
 
