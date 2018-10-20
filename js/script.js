@@ -2,6 +2,8 @@ var carriage = document.getElementById("carriage");
 var paper = document.getElementById("paper");
 var cursor = document.getElementById("cursor");
 var bigdiv = document.getElementById("centerdiv");
+var carv = document.getElementById("carriage-view");
+var bigdrag = document.getElementById("bigdrag");
 var justHereToLoadIt = new sound("type.wav");
 /*
 var justHereToLoadIt2 = new sound("return.wav");
@@ -9,12 +11,9 @@ var justHereToLoadIt3 = new sound("carriage.wav");*/
 var maxright = bigdiv.offsetWidth - carriage.offsetWidth;
 
 carriage.style.left = maxright + "px";
+carv.style.left = (carriage.offsetLeft - 160) + "px";
 
-var button = document.getElementById('btn-download');
-button.addEventListener('click', function (e) {
-    var dataURL = paper.toDataURL('image/png');
-    button.href = dataURL;
-});
+bigdrag.style.left = (carv.offsetLeft + 50) + "px";
 
 var ctx = paper.getContext('2d');
 ctx.font = '16px Courier New';
@@ -71,10 +70,18 @@ document.addEventListener('keydown', (event) => {
     }
     //enter key
     if (keyName == 13 && yesHeight()) {
+        event.preventDefault();
         paper.style.top = (paper.offsetTop - 20) + "px";
         var mySound = new sound("return.wav");
         mySound.play();
+        carv.classList.remove("bounce");
+        void carv.offsetWidth;
+        carv.classList.add("bounce");
     }
+
+    carv.style.left = (carriage.offsetLeft - 160) + "px";
+
+    bigdrag.style.left = (carv.offsetLeft + 50) + "px";
 });
 dragElement(carriage);
 
@@ -107,13 +114,13 @@ function dragElement(elmnt) {
         pos2 = 0,
         pos3 = 0,
         pos4 = 0;
+    /*
     if (document.getElementById(elmnt.id + "header")) {
-        /* if present, the header is where you move the DIV from:*/
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        /* if present, the header is where you move the DIV from:       document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
     } else {
         /* otherwise, move the DIV from anywhere inside the DIV:*/
-        elmnt.onmousedown = dragMouseDown;
-    }
+    bigdrag.onmousedown = dragMouseDown;
+
 
     function dragMouseDown(e) {
         e = e || window.event;
@@ -123,9 +130,11 @@ function dragElement(elmnt) {
         pos4 = e.clientY;
 
 
+        carv.classList.remove("bounce");
         carriage.classList.remove("bounce");
         void carriage.offsetWidth;
         carriage.classList.add("bounce");
+        carv.classList.add("bounce");
 
         document.onmouseup = closeDragElement;
         // call a function whenever the cursor moves:
@@ -148,6 +157,8 @@ function dragElement(elmnt) {
         // set the element's new position:
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
         checkWidth();
+        carv.style.left = (elmnt.offsetLeft - 160) + "px";
+        bigdrag.style.left = (carv.offsetLeft + 50) + "px";
     }
 
 
@@ -165,3 +176,10 @@ function yesHeight() {
         return false;
     }
 }
+
+
+var button = document.getElementById('btn-download');
+button.addEventListener('click', function (e) {
+    var dataURL = paper.toDataURL('image/png');
+    button.href = dataURL;
+});

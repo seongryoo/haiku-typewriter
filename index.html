@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div class="intro">
+    <div id="intro">
     <h1>Haiku Typewriter:</h1>
     <b>Start typing to compose your
         <br>own little comet.</b>
@@ -18,7 +18,8 @@
     
     </div>
     <div id="centerdiv">
-        
+            <div id="bigdrag"></div>
+        <img draggable="false" src="images/carriage.png" id="carriage-view">
         <div id="carriage">
             
             <canvas width='250' height='350' id="paper" class="bounce"></canvas>
@@ -31,6 +32,8 @@
         </div>
         
         <div id="cursor"></div>
+        <div class="ribbon"></div>
+        <img draggable="false" class="chassis" src="images/chassis.png">
         
         
     </div>
