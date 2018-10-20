@@ -187,7 +187,7 @@ body {
     height: 20px;
     background-color: black;
 }
-.faketext {
+#faketext {
     display: none;
 }
 @media screen and (max-width: 500px) {
@@ -196,15 +196,14 @@ body {
     }
 }
 @media (pointer:coarse) {
-    .faketext {
+    #faketext {
         position: absolute;
         display: block;
         width: 900px;
-        height: 900px;
-        background-color: redl
+        height:900px;
     }
     #intro {
-        width: 200px;
+        width: 300px;
     }
     body {
         overflow-x: hidden;

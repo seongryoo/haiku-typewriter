@@ -4,6 +4,7 @@ var cursor = document.getElementById("cursor");
 var bigdiv = document.getElementById("centerdiv");
 var carv = document.getElementById("carriage-view");
 var bigdrag = document.getElementById("bigdrag");
+var faketext = document.getElementById("faketext");
 var justHereToLoadIt = new sound("type.wav");
 /*
 var justHereToLoadIt2 = new sound("return.wav");
@@ -19,6 +20,13 @@ var ctx = paper.getContext('2d');
 ctx.font = '16px Courier New';
 document.addEventListener('keydown', (event) => {
     const keyName = event.keyCode;
+    
+    if( !keyName || keyName == 229 ) {
+        var ss = faketext.selectionStart - 1;
+        var ssv = ss || 0;
+        var char = faketext.value.substr(ssv,1);
+        keyName = char.charCodeAt(0);
+    }
 
     if ((keyName >= 48 && keyName <= 90) || keyName == 32 || keyName == 222 || (keyName >= 186 && keyName <= 193)) {
         if (keyName == 32) {
