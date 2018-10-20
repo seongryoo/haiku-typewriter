@@ -187,21 +187,12 @@ body {
     height: 20px;
     background-color: black;
 }
-#faketext {
-    display: none;
-}
 @media screen and (max-width: 500px) {
     #centerdiv {
         top: 250px;
     }
 }
 @media (pointer:coarse) {
-    #faketext {
-        position: absolute;
-        display: block;
-        width: 900px;
-        height:900px;
-    }
     #intro {
         width: 300px;
     }
