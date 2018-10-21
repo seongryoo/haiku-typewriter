@@ -192,16 +192,12 @@ a {
     height: 20px;
     background-color: black;
 }
-@media screen and (max-width: 500px) {
-    #centerdiv {
-        top: 250px;
-    }
-}
+
 @media (pointer:coarse) {
     #intro {
         width: 300px;
     }
-    body {
+    body { 
         overflow-x: hidden;
         position:fixed;
     }
@@ -217,6 +213,22 @@ a {
     right:0;
     top: 700px;
     padding: 10px;
+}
+@media screen and (max-width: 800px) {
+    #centerdiv {
+        top: 200px;
+    }
+    .plug {
+        top: 750px;
+    }
+}
+@media screen and (max-width: 500px) {
+    #centerdiv {
+        top: 250px;
+    }
+    .plug {
+        top: 800px;
+    }
 }
 a.plug:hover {
     text-decoration: underline;
