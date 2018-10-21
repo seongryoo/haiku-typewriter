@@ -233,3 +233,9 @@ a {
 a.plug:hover {
     text-decoration: underline;
 }
+#bigdrag + img {
+    transition: opacity .3s;
+}
+#bigdrag:hover + img {
+    opacity: .5;
+}
